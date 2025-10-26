@@ -1,9 +1,8 @@
+import os
 import sqlite3
 
-# path / url de conexão
-DB_PATH = "banco_escola.db"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DB_PATH = os.path.join(BASE_DIR, '..', 'banco_escola.db')
 
 def get_connection():
-    conn = sqlite3.connect(DB_PATH)
-    return conn
-    
+    return sqlite3.connect(DB_PATH)
