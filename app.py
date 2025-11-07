@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from dao.aluno_dao import AlunoDAO
 from dao.professor_dao import ProfessorDAO
 from dao.turma_dao import TurmaDAO
@@ -57,7 +57,15 @@ def listar_matricula():
    lista = dao.listar()
    return render_template('matricula/listar.html', lista=lista)
 
-   
+@app.route('/saudacao1/<nome>')
+def saudacao1(nome):
+   print(nome)
+   return render_template('saudacao/saudacao.html',valor_recebido=nome)
+
+@app.route('/saudacao2/')
+def saudacao2():
+   nome = request.args.get('nome')
+   return render_template('saudacao/saudacao.html',valor_recebido=nome)
 
 if __name__ == '__main__':
     app.run(debug=True)
