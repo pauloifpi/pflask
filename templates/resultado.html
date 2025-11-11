@@ -1,0 +1,19 @@
+{% include 'cabecalho.html' %}
+{% include 'menu.html' %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultado</title>
+</head>
+<body>
+    <h2>Dados Recebidos</h2>
+    <p><strong>Nome:</strong> {{ nome }}</p>
+    <p><strong>Data de Nascimento:</strong> {{ data_nasc }}</p>
+    <p><strong>CPF:</strong> {{ cpf }}</p>
+    <p><strong>Nome da Mãe:</strong> {{ mae }}</p>
+
+    <a href="/cadastro">Voltar</a>
+</body>
+</html>
+{% include 'rodape.html' %}

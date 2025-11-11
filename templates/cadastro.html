@@ -1,0 +1,28 @@
+{% include 'cabecalho.html' %}
+{% include 'menu.html' %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro</title>
+</head>
+<body>
+    <h2>Formulário de Cadastro</h2>
+    <form action="/resultado" method="POST">
+        <label>Nome:</label><br>
+        <input type="text" name="nome" required><br><br>
+
+        <label>Data de Nascimento:</label><br>
+        <input type="date" name="data_nasc" required><br><br>
+
+        <label>CPF:</label><br>
+        <input type="text" name="cpf" required><br><br>
+
+        <label>Nome da Mãe:</label><br>
+        <input type="text" name="mae" required><br><br>
+
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>
+{% include 'rodape.html' %}
