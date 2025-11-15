@@ -61,6 +61,28 @@ def listar_professor():
    lista = dao.listar()
    return render_template('professor/listar.html', lista=lista)
 
+@app.route('/professor/form')
+def form_professor():
+   return render_template('professor/form.html', professor=None)
+
+@app.route('/professor/salvar/', methods=['POST'])
+def salvar_professor(id=None):
+    id = request.form.get('id') or None    
+    nome = request.form['nome']
+    disciplina = request.form['disciplina']
+
+    dao = ProfessorDAO()
+    result = dao.salvar(id, nome, disciplina)
+
+    if result["status"] == "ok":
+        flash("Professor salvo com sucesso!", "success")
+    else:
+        flash(result["mensagem"], "danger")
+
+    return redirect('/professor')
+
+
+
 @app.route('/turma')
 def listar_turma():
    dao = TurmaDAO()
@@ -72,6 +94,26 @@ def listar_curso():
    dao = CursoDAO()
    lista = dao.listar()
    return render_template('curso/listar.html', lista=lista)
+
+@app.route('/curso/form')
+def form_curso():
+   return render_template('curso/form.html', curso=None)
+
+@app.route('/curso/salvar/', methods=['POST'])
+def salvar_curso(id=None):
+    id = request.form.get('id') or None    
+    nome = request.form['nome']
+    disciplina = request.form['disciplina']
+
+    dao = CursoDAO()
+    result = dao.salvar(id, nome, disciplina)
+
+    if result["status"] == "ok":
+        flash("Curso salvo com sucesso!", "success")
+    else:
+        flash(result["mensagem"], "danger")
+
+    return redirect('/curso')
 
 @app.route('/matricula')
 def listar_matricula():
