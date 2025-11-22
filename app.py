@@ -123,6 +123,39 @@ def listar_turma():
    lista = dao.listar()
    return render_template('turma/listar.html', lista=lista)
 
+@app.route('/turma/form')
+def form_turma():
+   return render_template('turma/form.html', turma=None)
+
+@app.route('/turma/salvar/', methods=['POST'])
+@app.route('/turma/salvar/<int:id>', methods=['POST'])
+def turma_salvar():
+    dao = TurmaDAO()
+    id = request.form.get('id')
+    semestre = request.form.get('semestre')
+    curso = request.form.get('curso')
+    professor = request.form.get('professor')
+
+    dao.salvar(id, semestre, curso, professor)
+
+    return redirect('/turma')
+
+@app.route('/turma/editar/<int:id>')
+def editar_turma(id):
+    dao = TurmaDAO()
+    turma = dao.buscar_por_id(id)
+    return render_template('turma/form.html', turma=turma)  
+@app.route('/turma/remover/<int:id>')
+
+def remover_turma(id):
+    dao = TurmaDAO()
+    resultado = dao.remover(id)
+    if resultado["status"] == "ok":
+        flash("Registro removido com sucesso!", "success")
+    else:
+        flash(resultado["mensagem"], "danger")
+    return redirect('/turma')
+
 @app.route('/curso')
 def listar_curso():
    dao = CursoDAO()
