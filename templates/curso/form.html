@@ -2,7 +2,7 @@
 
 
 <!-- Formulário de Aluno -->
-<h1 class="mb-4">Cadastrar Aluno</h1>
+<h1 class="mb-4">Cadastrar Curso</h1>
 
 
 <div class="row">
@@ -12,22 +12,23 @@
     <input type="hidden" name="id" value="{{ curso[0] if curso else '' }}">
 
     <!-- Nome -->
-    <div class="mb-3">
-        <label for="nome" class="form-label">Nome</label>
-        <input type="text" class="form-control" id="nome" name="nome" 
-               value="{{ professor[1] if professor else '' }}" required>
-    </div>
+<div class="mb-3">
+    <label for="nome" class="form-label">Nome do Curso</label>
+    <input type="text" class="form-control" id="nome" name="nome_curso" 
+           value="{{ curso[1] if curso else '' }}" required>
+</div>
 
-    <!-- Disciplina -->
-    <div class="mb-3">
-        <label for="disciplina" class="form-label">Disciplina</label>
-        <input type="text" class="form-control" id="disciplina" name="disciplina" 
-               value="{{ professor[2] if professor else '' }}" required>
-    </div>
+<!-- Duração -->
+<div class="mb-3">
+    <label for="duracao" class="form-label">Duração</label>
+    <input type="text" class="form-control" id="duracao" name="duracao" 
+           value="{{ curso[2] if curso else '' }}" required>
+</div>
+
 
     <div class="d-flex gap-2">
         <button type="submit" class="btn btn-primary">Salvar</button>
-        <a href="/professor" class="btn btn-secondary">Cancelar</a>
+        <a href="/curso" class="btn btn-secondary">Cancelar</a>
     </div>
 </form>
     </div>

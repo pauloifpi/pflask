@@ -38,3 +38,19 @@ class ProfessorDAO:
 
         finally:
             conn.close()
+
+    def buscar_por_id(self, id):
+        conn = get_connection()
+        cursor = conn.cursor()
+        cursor.execute("SELECT id, nome, disciplina FROM professor WHERE id = %s", (id,))
+        registro = cursor.fetchone()
+        conn.close()
+        return registro
+    
+    def remover(self, id):   
+        conn = get_connection()
+        cursor = conn.cursor()
+        cursor.execute("DELETE FROM professor WHERE id = %s", (id,))
+        conn.commit()
+        conn.close()
+        return {"status": "ok"}        
